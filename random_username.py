@@ -8,7 +8,10 @@ def find_word(filename):
     return(list_of_words[randint(0, len(list_of_words) - 1)].rstrip())
     file.close()
 
+print("")
+print("Random usernames:")
 for word in range(6):
     adjective = (find_word("./wordlists/adjectives.txt"))
     noun = (find_word("./wordlists/nouns.txt"))
-    print((adjective[0].upper() + adjective[1:] + noun[0].upper() + noun[1:]))
+    print("    ", (adjective[0].upper() + adjective[1:] + noun[0].upper() + noun[1:]))
+print("")
