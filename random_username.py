@@ -9,6 +9,6 @@ def find_word(filename):
     file.close()
 
 for word in range(6):
-    adjective = (find_word("./wordlists/wordlist_adjectives.txt"))
-    noun = (find_word("./wordlists/wordlist_nouns.txt"))
+    adjective = (find_word("./wordlists/adjectives.txt"))
+    noun = (find_word("./wordlists/nouns.txt"))
     print((adjective[0].upper() + adjective[1:] + noun[0].upper() + noun[1:]))
