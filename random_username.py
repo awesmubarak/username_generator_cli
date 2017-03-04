@@ -1,13 +1,16 @@
 #!/usr/bin/python3
 
-import sys, getopt
+import sys
+import getopt
 from random import randint
 
+
 def find_word(filename):
-    file = open(filename,"r")
+    file = open(filename, "r")
     list_of_words = file.readlines()
     return(list_of_words[randint(0, len(list_of_words) - 1)].rstrip())
     file.close()
+
 
 def main(args):
 
@@ -16,7 +19,8 @@ def main(args):
     includes_underscores = False
 
     try:
-        opts, args = getopt.getopt(args,"hun:",["help","underscores=","number_of_usernames=",])
+        opts, args = getopt.getopt(
+            args, "hun:", ["help", "underscores=", "number_of_usernames=", ])
     except getopt.GetoptError:
         print(USAGE_INSTRUCTIONS)
         sys.exit(2)
