@@ -14,13 +14,18 @@ def find_word(filename):
 
 def main(args):
 
-    USAGE_INSTRUCTIONS = "\n random_username.py -u -n <number_of_usernames> \n"
+    USAGE_INSTRUCTIONS = ("\n random_username.py -u [-n <number_of_usernames>]"
+                          "[--minimum_size <minimum size>]"
+                          "[--maximum_size <maximum size>]\n")
     number_of_usernames = 6
     includes_underscores = False
+    minimum_size = 0
+    maximum_size = 255
 
     try:
         opts, args = getopt.getopt(
-            args, "hun:", ["help", "underscores=", "number_of_usernames=", ])
+            args, "hun:", ["help", "underscores=", "number_of_usernames=",
+                           "maximum_size=", "minimum_size="])
     except getopt.GetoptError:
         print(USAGE_INSTRUCTIONS)
         sys.exit(2)
@@ -40,16 +45,24 @@ def main(args):
                 sys.exit()
         elif opt in ("-u", "--underscores="):
             includes_underscores = True
+        elif opt == "--maximum_size":
+            maximum_size = int(arg)
+        elif opt == "--minimum_size":
+            minimum_size = int(arg)
 
     print("\n Your usernames:")
-    for word_number in range(number_of_usernames):
+    count = 0
+    while count < number_of_usernames:
         adjective = (find_word("./wordlists/adjectives.txt"))
         noun = (find_word("./wordlists/nouns.txt"))
-        if includes_underscores:
-            print("    ", (adjective + "_" + noun))
-        else:
-            print("    ", (adjective[0].upper() + adjective[1:] +
-                           noun[0].upper() + noun[1:]))
+        word_size = len(adjective + noun)
+        if maximum_size > word_size and word_size > minimum_size:
+            if includes_underscores:
+                print("    ", (adjective + "_" + noun))
+            else:
+                print("    ", (adjective[0].upper() + adjective[1:] +
+                               noun[0].upper() + noun[1:]))
+            count += 1
     print("")
 
 
