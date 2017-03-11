@@ -50,9 +50,17 @@ def main(args):
         elif opt in ("-u", "--underscores="):
             includes_underscores = True
         elif opt == "--maximum_size":
-            maximum_size = int(arg)
+            try:
+                maximum_size = int(arg)
+            except ValueError:
+                print("\n Maximum size must be a number\n")
+                sys.exit(2)
         elif opt == "--minimum_size":
-            minimum_size = int(arg)
+            try:
+                minimum_size = int(arg)
+            except ValueError:
+                print("\n Minimum size must be a number\n")
+                sys.exit(2)
 
     print("\n Your usernames:")
     for count in range(number_of_usernames):
