@@ -24,6 +24,7 @@ def main(args):
     includes_underscores = False
     minimum_size = 0
     maximum_size = 255
+    indentation_level = 4
 
     try:
         opts, args = getopt.getopt(
@@ -60,10 +61,10 @@ def main(args):
         word_size = len(adjective + noun)
         if maximum_size > word_size and word_size > minimum_size:
             if includes_underscores:
-                print("    ", (adjective + "_" + noun))
+                print(" " * (indentation_level + 1), (adjective + "_" + noun))
             else:
-                print("    ", (adjective[0].upper() + adjective[1:] +
-                               noun[0].upper() + noun[1:]))
+                print(" " * (indentation_level + 1), (adjective[0].upper()
+                      + adjective[1:] + noun[0].upper() + noun[1:]))
     print("")
 
 
