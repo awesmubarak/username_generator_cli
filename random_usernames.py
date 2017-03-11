@@ -61,10 +61,13 @@ def main(args):
         word_size = len(adjective + noun)
         if maximum_size > word_size and word_size > minimum_size:
             if includes_underscores:
-                print(" " * (indentation_level + 1), (adjective + "_" + noun))
+                chosen_username = adjective + "_" + noun
+                print(" " * (indentation_level + 1), chosen_username)
             else:
-                print(" " * (indentation_level + 1), (adjective[0].upper()
-                      + adjective[1:] + noun[0].upper() + noun[1:]))
+                camel_case_adjective = adjective[0].upper() + adjective[1:]
+                camel_case_noun = noun[0].upper() + noun[1:]
+                chosen_username = (camel_case_adjective + camel_case_noun)
+                print(" " * (indentation_level + 1), chosen_username)
     print("")
 
 
