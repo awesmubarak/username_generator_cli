@@ -8,7 +8,7 @@ adjective-noun combinations.
 
 ## Usage
 
-Run the script using `python3 random_username.py` or `./random_username.py`,
+Run the script using `python3 random_usernames.py` or `./random_usernames.py`,
 followed by any desired command line arguments.
 
 | Command line argument                                         | Description                           |
