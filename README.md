@@ -6,6 +6,10 @@ Each username is an adjective and a noun strung together. There are 142
 adjectives and 484 nouns in the wordlists, resulting in 68,728 possible
 adjective-noun combinations.
 
+The adjective list was taken from [talkenglish][adjective list source]. The
+noun list was also taken from [talkenglish][noun list source]. Word that fit
+into more than one category were excluded (e.g. file is a noun and a verb).
+
 ## Usage
 
 Run the script using `python3 random_usernames.py` or `./random_usernames.py`,
@@ -18,3 +22,9 @@ followed by any desired command line arguments.
 | `-u` <br> `--underscores`                                     | Uses underscores instead of camelCase |
 | `--maximum_size <maximum size>`                               | Sets maximum size of usernames        |
 | `--minimum_size <minimum size>`                               | Sets minimum size of usernames        |
+
+
+<!-- Links: -->
+
+[adjective list source]: http://www.talkenglish.com/vocabulary/top-500-adjectives.aspx
+[noun list source]: http://www.talkenglish.com/vocabulary/top-1500-nouns.aspx
