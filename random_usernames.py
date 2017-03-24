@@ -21,12 +21,12 @@ def main(args):
                           "[--minimum_size <minimum size>]"
                           "[--maximum_size <maximum size>]"
                           "\n")
-    number_of_usernames = 6
-    includes_underscores = False
-    minimum_size = 0
-    maximum_size = 255
-    indentation_level = 4
     file_name = ""
+    includes_underscores = False
+    indentation_level = 4
+    maximum_size = 255
+    minimum_size = 0
+    number_of_usernames = 6
 
     try:
         opts, args = getopt.getopt(
