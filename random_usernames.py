@@ -62,7 +62,8 @@ def main(args):
                 print("\n Minimum size must be a number\n")
                 sys.exit(2)
 
-    print("\n Your usernames:")
+    usernames = []
+
     for count in range(number_of_usernames):
         adjective = (find_word("./wordlists/adjectives.txt"))
         noun = (find_word("./wordlists/nouns.txt"))
@@ -70,12 +71,15 @@ def main(args):
         if maximum_size > word_size and word_size > minimum_size:
             if includes_underscores:
                 chosen_username = adjective + "_" + noun
-                print(" " * (indentation_level + 1), chosen_username)
+                usernames.append(" " * (indentation_level + 1)+ chosen_username)
             else:
                 camel_case_adjective = adjective[0].upper() + adjective[1:]
                 camel_case_noun = noun[0].upper() + noun[1:]
                 chosen_username = (camel_case_adjective + camel_case_noun)
-                print(" " * (indentation_level + 1), chosen_username)
+                usernames.append(" " * (indentation_level + 1)+ chosen_username)
+
+    print("\n Your usernames:")
+    print('%s' % '\n'.join(map(str, usernames)))
     print("")
 
 
