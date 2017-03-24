@@ -17,6 +17,7 @@ def main(args):
     USAGE_INSTRUCTIONS = ("\n random_usernames.py"
                           " -u "
                           "[-n <number of usernames>]"
+                          "[--file_name <file name>]"
                           "[--minimum_size <minimum size>]"
                           "[--maximum_size <maximum size>]"
                           "\n")
@@ -25,11 +26,12 @@ def main(args):
     minimum_size = 0
     maximum_size = 255
     indentation_level = 4
+    file_name = ""
 
     try:
         opts, args = getopt.getopt(
             args, "hun:", ["help", "underscores", "number_of_usernames=",
-                           "maximum_size=", "minimum_size="])
+                           "file_name=", "maximum_size=", "minimum_size="])
     except getopt.GetoptError:
         print(USAGE_INSTRUCTIONS)
         sys.exit(2)
@@ -61,6 +63,8 @@ def main(args):
             except ValueError:
                 print("\n Minimum size must be a number\n")
                 sys.exit(2)
+        elif opt == "--file_name":
+            file_name = arg
 
     usernames = []
 
@@ -79,9 +83,16 @@ def main(args):
                 usernames.append(chosen_username)
 
     padding = " " * (indentation_level + 1)
-    print("\n Your usernames:")
-    print(padding + "%s" % ("\n" + padding).join(map(str, usernames)))
-    print("")
+
+    if file_name == "":
+        print("\n Your usernames:")
+        print(padding + "%s" % ("\n" + padding).join(map(str, usernames)))
+        print("")
+    else:
+        with open(file_name, 'w') as file:
+            file.write("\n Your usernames:\n")
+            file.write(padding + "%s" % ("\n" + padding).join(map(str, usernames)))
+            file.write("\n\n")
 
 
 if __name__ == "__main__":
