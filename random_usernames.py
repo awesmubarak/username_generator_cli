@@ -71,15 +71,16 @@ def main(args):
         if maximum_size > word_size and word_size > minimum_size:
             if includes_underscores:
                 chosen_username = adjective + "_" + noun
-                usernames.append(" " * (indentation_level + 1)+ chosen_username)
+                usernames.append(chosen_username)
             else:
                 camel_case_adjective = adjective[0].upper() + adjective[1:]
                 camel_case_noun = noun[0].upper() + noun[1:]
                 chosen_username = (camel_case_adjective + camel_case_noun)
-                usernames.append(" " * (indentation_level + 1)+ chosen_username)
+                usernames.append(chosen_username)
 
+    padding = " " * (indentation_level + 1)
     print("\n Your usernames:")
-    print('%s' % '\n'.join(map(str, usernames)))
+    print(padding + "%s" % ("\n" + padding).join(map(str, usernames)))
     print("")
 
 
