@@ -6,93 +6,105 @@ from random import randint
 
 
 def find_word(filename):
-    file = open(filename, "r")
-    list_of_words = file.readlines()
+    """Return a chosen word from a file containing a word per line."""
+    with open(filename, "r") as file:
+        list_of_words = file.readlines()
     return(list_of_words[randint(0, len(list_of_words) - 1)].rstrip())
-    file.close()
 
 
 def main(args):
-
-    USAGE_INSTRUCTIONS = ("\n random_usernames.py"
+    """Main program."""
+    # define variables
+    USAGE_INSTRUCTIONS = ("\nrandom_usernames.py"
                           " -u "
                           "[-n <number of usernames>]"
                           "[--file_name <file name>]"
                           "[--minimum_size <minimum size>]"
                           "[--maximum_size <maximum size>]"
                           "\n")
+    ERROR_MESSAGE = "\033[1m" + "\nERROR: "
     file_name = ""
-    includes_underscores = False
+    underscores = False
     indentation_level = 4
     maximum_size = 255
     minimum_size = 0
     number_of_usernames = 6
+    usernames = []
 
+    # parse command line arguments
     try:
         opts, args = getopt.getopt(
-            args, "hun:", ["help", "underscores", "number_of_usernames=",
-                           "file_name=", "maximum_size=", "minimum_size="])
+            args, "h", ["help", "underscores", "number_of_usernames=",
+                        "file_name=", "maximum_size=", "minimum_size="])
     except getopt.GetoptError:
+        print(ERROR_MESSAGE + "Invalid commandline arguments")
         print(USAGE_INSTRUCTIONS)
         sys.exit(2)
     for opt, arg in opts:
         if opt in ("-h", "help"):
+            # help instructins
             print(USAGE_INSTRUCTIONS)
-            sys.exit()
-        elif opt in ("-n", "--number_of_usernames"):
+            sys.exit(0)
+        elif opt == "--number_of_usernames":
+            # number of usernames
             try:
-                if int(arg) > 0:
+                # check if positive
+                if int(arg) >= 1:
                     number_of_usernames = int(arg)
                 else:
-                    print(USAGE_INSTRUCTIONS)
-                    sys.exit()
-            except:
-                print(USAGE_INSTRUCTIONS)
-                sys.exit()
-        elif opt in ("-u", "--underscores="):
-            includes_underscores = True
+                    print(ERROR_MESSAGE + "Number of usernames must be positive\n")
+                    sys.exit(2)
+            except ValueError:
+                print(ERROR_MESSAGE + "Number of usernames must be a number\n")
+                sys.exit(2)
+        elif opt == "--underscores":
+            # underscores
+            underscores = True
         elif opt == "--maximum_size":
+            # maximum size
             try:
                 maximum_size = int(arg)
             except ValueError:
-                print("\n Maximum size must be a number\n")
+                print(ERROR_MESSAGE + "Maximum size must be a number\n")
                 sys.exit(2)
         elif opt == "--minimum_size":
+            # minimum size
             try:
                 minimum_size = int(arg)
             except ValueError:
-                print("\n Minimum size must be a number\n")
+                print(ERROR_MESSAGE + "Minimum size must be a number\n")
                 sys.exit(2)
         elif opt == "--file_name":
+            # file name
             file_name = arg
 
-    usernames = []
-
+    # get usernames
     for count in range(number_of_usernames):
+        # load words from files
         adjective = (find_word("./wordlists/adjectives.txt"))
         noun = (find_word("./wordlists/nouns.txt"))
+        # make sure the word size is appropriate
         word_size = len(adjective + noun)
         if maximum_size > word_size and word_size > minimum_size:
-            if includes_underscores:
+            # print in the correct format
+            if underscores:
                 chosen_username = adjective + "_" + noun
-                usernames.append(chosen_username)
             else:
                 camel_case_adjective = adjective[0].upper() + adjective[1:]
                 camel_case_noun = noun[0].upper() + noun[1:]
                 chosen_username = (camel_case_adjective + camel_case_noun)
-                usernames.append(chosen_username)
+            # indent and append username
+            usernames.append(((indentation_level + 1) * " ") + chosen_username)
 
-    padding = " " * (indentation_level + 1)
+    # join and format usernames
+    output_text = "\n Your usernames:\n" + ("\n").join(usernames) + "\n"
 
+    # print or save usernames
     if file_name == "":
-        print("\n Your usernames:")
-        print(padding + "%s" % ("\n" + padding).join(map(str, usernames)))
-        print("")
+        print(output_text)
     else:
         with open(file_name, 'w') as file:
-            file.write("\n Your usernames:\n")
-            file.write(padding + "%s" % ("\n" + padding).join(map(str, usernames)))
-            file.write("\n\n")
+            file.write(output_text)
 
 
 if __name__ == "__main__":
