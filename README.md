@@ -1,4 +1,4 @@
-# random_usernames.py
+# Username generator
 
 **A command line application to generate random usernames.**
 
@@ -12,7 +12,7 @@ into more than one category were excluded (e.g. file is a noun and a verb).
 
 ## Usage
 
-Run the script using `python3 random_usernames.py` or `./random_usernames.py`,
+Run the script using `python3 username_generator.py` or `./username_generator.py`,
 followed by any desired command line arguments.
 
 | Command line argument                                         | Description                                |
