@@ -2,6 +2,7 @@
 
 import sys
 import getopt
+import os
 from random import randint
 
 
@@ -103,7 +104,7 @@ def main(args):
     if file_name == "":
         print(output_text)
     else:
-        with open(file_name, 'w') as file:
+        with open(os.path.expanduser(file_name), 'w') as file:
             file.write(output_text)
 
 
