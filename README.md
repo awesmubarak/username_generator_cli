@@ -15,14 +15,14 @@ into more than one category were excluded (e.g. file is a noun and a verb).
 Run the script using `python3 username_generator.py` or `./username_generator.py`,
 followed by any desired command line arguments.
 
-| Command line argument            | Description                                |
-| -------------------------------- | ------------------------------------------ |
-| `-h`                             | Shows a help screen                        |
-| `--number_of_usernames <number>` | Changes number of usernames generated      |
-| `--underscores`                  | Uses underscores instead of camelCase      |
-| `--file_name <file name>`        | Allows saving and specifies save location. |
-| `--maximum_size <maximum size>`  | Sets maximum size of usernames             |
-| `--minimum_size <minimum size>`  | Sets minimum size of usernames             |
+| Command line argument         | Description                          |
+| ----------------------------- | ------------------------------------ |
+| `-h`, `--help`                | Display usage instructions           |
+| `--num <number of usernames>` | Change number of usernames generated |
+| `--underscores`               | Use underscores instead of camelCase |
+| `--fname <file name>`         | Save output in a text file           |
+| `--max_size <maximum size>`   | Set maximum size of usernames        |
+| `--min_size <minimum size>`   | Set minimum size of usernames        |
 
 <!-- Links: -->
 
