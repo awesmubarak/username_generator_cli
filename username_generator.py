@@ -22,15 +22,15 @@ def main(args):
     # parse command line arguments
     parser = argparse.ArgumentParser(description="Generate random usernames.")
     parser.add_argument("--num", metavar="NUMBER", type=int,
-                        default=6, help="Change number of usernames generated")
+                        default=6, help="change number of usernames generated")
     parser.add_argument("--underscores", default=False, action="store_true",
-                        help="Use underscores instead of camelCase")
+                        help="use underscores instead of camelCase")
     parser.add_argument("--fname", metavar="FILE NAME", default="",
-                        help="Save output in a text file")
+                        help="save output in a text file")
     parser.add_argument("--max_size", metavar="NUMBER", type=int,
-                        default=255, help="Set maximum size of usernames")
+                        default=255, help="set maximum size of usernames")
     parser.add_argument("--min_size", metavar="NUMBER", type=int,
-                        default=0, help="Set minimum size of usernames")
+                        default=0, help="set minimum size of usernames")
     args = parser.parse_args()
 
     # get usernames
