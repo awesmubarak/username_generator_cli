@@ -27,6 +27,8 @@ def main(args):
                         help="use underscores instead of camelCase")
     parser.add_argument("--dont_print", default=False, action="store_true",
                         help="prevent printing usernames to terminal")
+    parser.add_argument("--return_unames", default=False, action="store_true",
+                        help="return raw usernames for processing")
     parser.add_argument("--fname", metavar="FILE NAME", default="",
                         help="save output in a text file")
     parser.add_argument("--max_size", metavar="NUMBER", type=int,
@@ -60,6 +62,10 @@ def main(args):
     if args.fname != "":
         with open(os.path.expanduser(args.fname), "w") as file:
             file.write(output_text + "\n")
+
+    # return usernames if the user wants that
+    if args.return_unames:
+        return usernames
 
 
 if __name__ == "__main__":

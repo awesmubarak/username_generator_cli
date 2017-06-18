@@ -19,11 +19,12 @@ followed by any desired command line arguments.
 | ----------------------------- | ------------------------------------ |
 | `-h`, `--help`                | Display usage instructions           |
 | `--dont_print`                | Prevent printing usernames           |
-| `--num <number of usernames>` | Change number of usernames generated |
-| `--underscores`               | Use underscores instead of camelCase |
 | `--fname <file name>`         | Save output in a text file           |
 | `--max_size <maximum size>`   | Set maximum size of usernames        |
 | `--min_size <minimum size>`   | Set minimum size of usernames        |
+| `--num <number of usernames>` | Change number of usernames generated |
+| `--return_unames`             | Return array of usernames            |
+| `--underscores`               | Use underscores instead of camelCase |
 
 <!-- Links: -->
 
