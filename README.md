@@ -18,6 +18,7 @@ followed by any desired command line arguments.
 | Command line argument         | Description                          |
 | ----------------------------- | ------------------------------------ |
 | `-h`, `--help`                | Display usage instructions           |
+| `--dont_print`                | Prevent printing usernames           |
 | `--num <number of usernames>` | Change number of usernames generated |
 | `--underscores`               | Use underscores instead of camelCase |
 | `--fname <file name>`         | Save output in a text file           |

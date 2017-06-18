@@ -25,6 +25,8 @@ def main(args):
                         default=6, help="change number of usernames generated")
     parser.add_argument("--underscores", default=False, action="store_true",
                         help="use underscores instead of camelCase")
+    parser.add_argument("--dont_print", default=False, action="store_true",
+                        help="prevent printing usernames to terminal")
     parser.add_argument("--fname", metavar="FILE NAME", default="",
                         help="save output in a text file")
     parser.add_argument("--max_size", metavar="NUMBER", type=int,
@@ -53,9 +55,9 @@ def main(args):
 
     # format and return usernames to user
     output_text = "\n Your usernames:\n" + ("\n").join(usernames) + "\n"
-    if args.fname == "":
+    if not args.dont_print:
         print(output_text)
-    else:
+    if args.fname != "":
         with open(os.path.expanduser(args.fname), "w") as file:
             file.write(output_text + "\n")
 
