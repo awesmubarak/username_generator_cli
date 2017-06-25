@@ -18,7 +18,7 @@ followed by any desired command line arguments.
 | Command line argument         | Description                          |
 | ----------------------------- | ------------------------------------ |
 | `-h`, `--help`                | Display usage instructions           |
-| `--dont_print`                | Prevent printing usernames           |
+| `--no_print`                  | Prevent printing usernames           |
 | `--fname <file name>`         | Save output in a text file           |
 | `--max_size <maximum size>`   | Set maximum size of usernames        |
 | `--min_size <minimum size>`   | Set minimum size of usernames        |
