@@ -75,14 +75,6 @@ class TestUM(unittest.TestCase):
         max_size = len(max(unames))
         self.assertEqual(max_size >= 7, True)
 
-    def test_words_greater_than_7(self):
-        args = {'num': 10, 'underscores': False, 'no_print': True, 'fname': '',
-                'max_size': 255, 'min_size': 7, 'indentation': 0,
-                'no_intro': True, 'return_val': True}
-        unames = username_generator.main(args=args)
-        max_size = len(max(unames))
-        self.assertEqual(max_size >= 7, True)
-
     def test_words_less_than_14(self):
         args = {'num': 10, 'underscores': False, 'no_print': True, 'fname': '',
                 'max_size': 14, 'min_size': 0, 'indentation': 0,
