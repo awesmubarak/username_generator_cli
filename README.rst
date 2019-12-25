@@ -17,7 +17,7 @@ Installation
 
 Using pip:
 
-``sudo pip3 install username_generator``
+``pip3 install username_generator``
 
 Manual:
 
